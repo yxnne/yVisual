@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Population of One year</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="bar.css" />
+  <!-- <script src="main.js"></script>  -->
+</head>
+<body>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script>
+    let popData = [
+      { age: "80 and up", value:0.016 },
+      { age: "75 - 79", value: 0.015 },
+      { age: "70 - 74", value: 0.021 },
+      { age: "65 - 69", value: 0.026 },
+      { age: "60 - 64", value: 0.034 },
+      { age: "55 - 59", value: 0.045 },
+      { age: "50 - 54", value: 0.051 },
+      { age: "45 - 49", value: 0.060 },
+      { age: "40 - 44", value: 0.066 },
+      { age: "35 - 39", value: 0.071 },
+      { age: "30 - 34", value: 0.073 },
+      { age: "25 - 29", value: 0.081 },
+      { age: "20 - 24", value: 0.089 },
+      { age: "15 - 19", value: 0.088 },
+      { age: "10 - 14", value: 0.086 },
+      { age: "5 - 9", value: 0.088 },
+      { age: "0 - 4", value: 0.093 },
+    ];
+
+    let margin = { top:30, right:0, bottom:0, left:100 };
+    let width = 500 - margin.left - margin.left;
+    let height = 450 - margin.top - margin.bottom;
+
+    let x = d3.scale.linear()
+      .domain([0, d3.max(popData, e => e.value)])
+      .range([0, width]);
+
+    let y = d3.scale.ordinal()
+      .domain(popData.map( e => e.age))
+      .rangeBands([0, height], 0.2, 0);
+  
+
+    let xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("top")
+      .ticks(5, "%");
+    
+    let yAxis = d3.svg.axis()
+      .orient("left")
+      .scale(y);
+
+    let body = d3.select("body");
+
+    body.append("h2")
+      .text("This Is Population Age Distribution");
+    
+    body.append("div")
+      .attr("class", "top-label age-label")
+      .append("p")
+      .text("age group");
+
+    body.append("div")
+      .attr("class", "top-level")
+      .append("p")
+      .text("portion of the population");
+
+    body.append("div")
+      .attr("class", "clearfix");
+
+    let svg = body.append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", `translate(${margin.left}, ${margin.right})`);
+
+    let barGroup = svg.append("g")
+      .attr("class", "bar");
+
+    barGroup.selectAll("rect")
+      .data(popData)
+      .enter()
+      .append("rect")
+      .attr("x", 0)
+      .attr("y", d => y(d.age))
+      .attr("width", d => x(d.value))
+      .attr("height", d =>y.rangeBand());
+
+    svg.append("g")
+      .call(xAxis)
+      .attr("class", "x axis");
+
+    svg.append("g")
+      .call(yAxis)
+      .attr("class", "y axis")    
+  </script>
+</body>
+</html>

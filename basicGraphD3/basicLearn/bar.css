@@ -1,0 +1,54 @@
+body {
+  font-family: Helvetica, sans-serif;
+}
+
+svg {
+  width:500px;
+  height:500px;
+}
+
+.top-label {
+  font-size:13px;
+  font-family: italic;
+  text-transform: uppercase;
+  float: left;
+}
+.age-label {
+  text-align: right;
+  font-weight: bold;
+  width:90px;
+  padding-right: 10px;
+}
+
+.clear-fix{
+  clear:both;
+}
+  
+.bar {
+  fill:darkslateblue;
+}
+.bar-label {
+  text-anchor: end;
+}
+
+.axis-label {
+  text-anchor: middle;
+  font-size: 13px;
+}
+
+.x.axis line {
+  fill:none;
+  stroke: #000;
+}
+
+.x.axis text {
+  font-size: 13px;
+}
+
+.axis path {
+  display: none;
+}
+
+.y.axis line {
+  dispaly: none;
+}
