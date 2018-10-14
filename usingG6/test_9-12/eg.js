@@ -216,7 +216,9 @@ const graph = new G6.Graph({
   container: 'mountNode',  // 容器ID
   fitView: 'cc',
   renderer: 'svg',
-  height: window.innerHeight,
+  // height: window.innerHeight,
+  width:1800,
+  height:1800,
   // maxZoom:0.6
 });
 
@@ -245,7 +247,7 @@ graph.on('node:click', ev=>{
   }
 });
 
-graph.zoom(0.6); 
+// graph.zoom(0.6); 
 
 // 展开所有
 function expandAllItem(){
