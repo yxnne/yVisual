@@ -1,20 +1,3 @@
-// 数据处理 dataProcessor.js
-// 得到主节点的个数， 找出起始节点
-
-
-// 计算布局 layout.js
-// 根据不同情况覆盖
-
-
-// 配置动画效果规则 绘制节点方法
-
-
-// 顺序绘制节点
-
-
-// 移除节点
-
-
 // 定义类型
 const TYPE_NODE_MAIN = 'TYPE_NODE_MAIN'; 	// 节点
 const TYPE_NODE_SUB = 'TYPE_NODE_SUB';
